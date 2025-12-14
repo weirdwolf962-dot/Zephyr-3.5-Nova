@@ -1,5 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Zephyr 4.5 Swift Popup</title>
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .popup {
+      position: relative;
+      background: #fff;
+      border-radius: 18px;
+      padding: 30px 26px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: pop 0.3s ease;
+    }
+
+    @keyframes pop {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* CROSS BUTTON */
+    .close-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #f2f2f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      color: #333;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .close-btn:hover {
+      background: #e0e0e0;
+      transform: scale(1.1);
+    }
+
+    .popup img {
+      width: 110px;
+      margin-bottom: 16px;
+    }
+
+    .popup h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #111;
+    }
+
+    .popup p {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 22px;
+      line-height: 1.5;
+    }
+
+    .popup a {
+      display: inline-block;
+      padding: 12px 22px;
+      background: #000;
+      color: #fff;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .popup a:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="overlay" id="zephyrPopup" style="display:none;">
+  <div class="popup">
+
+    <!-- Cross Button -->
+    <div class="close-btn" onclick="closePopup()">✕</div>
+
+    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="Zephyr AI">
+
+    <h2>Zephyr 4.5 Swift is Live 🚀</h2>
+    <p>
+      Meet the newest evolution of Zephyr — now faster, smarter,
+      and upgraded with <strong>image generation</strong>.
+      Switch to Zephyr 4.5 Swift and unlock next-level creativity.
+    </p>
+
+    <a href="https://zephyr-4-5-swift.vercel.app" target="_blank">
+      Try Zephyr 4.5 Swift
+    </a>
+  </div>
+</div>
+
+<script>
+  const popup = document.getElementById("zephyrPopup");
+
+  if (!localStorage.getItem("zephyr45_seen")) {
+    setTimeout(() => {
+      popup.style.display = "flex";
+    }, 800);
+  }
+
+  function closePopup() {
+    popup.style.display = "none";
+    localStorage.setItem("zephyr45_seen", "true");
+  }
+</script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
